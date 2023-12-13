@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TWProjectCRRUD.Models.Entities.Vehicle>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Current Cobra R List</h1>
+
+<a asp-action="Create" asp-controller="Vehicle">Add a New Cobra R</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductionYear)
+            </th>
+          
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductionYear)
+            </td>
+           
+            <td>  
+           
+            <a asp-action="Details" asp-controller="Vehicle" asp-route-id="@item.Id">Vehicle Details</a>    
+            <a asp-action="Edit" asp-controller="Vehicle" asp-route-id="@item.Id">Edit Vehicle</a>
+            <a asp-action="Delete" asp-controller="Vehicle" asp-route-id="@item.Id">Delete Vehicle</a>
+            <!--
+               <a asp-action="AssignUser" asp-controller="VehicleUser" asp-route-id="@item.Id">Assign User</a>
+            -->
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

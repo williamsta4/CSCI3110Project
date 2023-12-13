@@ -1,0 +1,3 @@
+Requirements - database with 2 linking tables and one additional
+Web API 
+Javascript - Json - AJAX

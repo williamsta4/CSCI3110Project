@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TWProjectCRRUD.Models.Entities.Vehicle>
+
+@{
+	ViewData["Title"] = "RemoveVehicleList";
+	var link = (VehicleUser?)ViewData["Link"];
+}
+
+<h1>RemoveVehicleList</h1>
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Id)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Model)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.ProductionYear)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Id)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Model)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.ProductionYear)
+				</td>
+				<td>
+					<a asp-action="RemoveConfirmedVehicle" asp-controller="VehicleUser" asp-route-id="@link.Id" asp-route-userId="@item.Id">Remove Vehicle</a>
+					
+				</td>
+			</tr>
+		}
+		<a asp-controller="User" asp-action="Index">Back to Users</a>
+	</tbody>
+</table>

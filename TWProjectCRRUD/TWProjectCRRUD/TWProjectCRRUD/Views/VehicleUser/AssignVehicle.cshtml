@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TWProjectCRRUD.Models.Entities.Vehicle>
+
+@{
+    ViewData["Title"] = "AssignVehicle";
+    var user = (User?)ViewData["User"];
+}
+
+<h1>Assign a Vehicle to @user.FirstName  @user.LastName</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductionYear)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductionYear)
+            </td>
+            <td>
+                <a asp-action="AssignToUser" asp-controller="VehicleUser" asp-route-id="@user.Id" asp-route-vehicleId="@item.Id">Assign</a>
+            </td>               
+        </tr>
+}
+        <a asp-action="Index" asp-controller="User"> Back to Users</a>
+    </tbody>
+</table>

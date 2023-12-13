@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TWProjectCRRUD.Models.Entities.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New User</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                <a asp-action="Details" asp-controller="User" asp-route-id="@item.Id">User Details</a>
+                <a asp-action="Edit" asp-controller="User" asp-route-id="@item.Id">Edit User</a>
+                <a asp-action="Delete" asp-controller="User" asp-route-id="@item.Id">Delete User</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
